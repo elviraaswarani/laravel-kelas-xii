@@ -37,3 +37,4 @@ php artisan migrate -s
 ```bash
 php artisan storage:link
 ```  
+```  
