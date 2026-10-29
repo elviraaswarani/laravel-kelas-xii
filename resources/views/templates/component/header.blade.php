@@ -11,7 +11,20 @@
     </div>
     <div class="w3l_sign_in_register">
       <ul>
-        <li><a href="#" data-toggle="modal" data-target="#myModal">Login</a></li>
+        @guest
+          <li><a href="#" data-toggle="modal" data-target="#myModal">Login / Register</a></li>
+        @else
+          <li><span class="auth-user-name">{{ Auth::user()->name }}</span></li>
+          @if (Auth::user()->role?->name === 'admin')
+            <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+          @endif
+          <li>
+            <form action="{{ route('logout') }}" method="post" class="logout-form">
+              @csrf
+              <button type="submit">Logout</button>
+            </form>
+          </li>
+        @endguest
       </ul>
     </div>
     <div class="clearfix"> </div>

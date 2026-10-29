@@ -232,6 +232,12 @@ ul.w3l-ratings li i ,.w3l-ratings a i{
     position: relative;
     padding-left: 0;
 }
+.movie-poster {
+    display: block;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
 .w3l-movie-gride-agile:nth-child(6),.w3l-movie-gride-agile:nth-child(12) {
     margin-left: 0%;
 }

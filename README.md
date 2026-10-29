@@ -1,39 +1,22 @@
-# Bahan materi kelas XII
-Langkah-langkah yang harus dilakukan:
+# Laravel Kelas XII
 
-1. Silahkan kalian fork untuk memasukan kedalam repository kalian masing-masing
-2. Setelah di fork silahkan kalian lakukan cloning dari repo hasil fork
+## Menyiapkan aplikasi
+
+Pastikan MySQL aktif, lalu buat database dari direktori proyek:
+
 ```bash
-git clone nama-repo-masing-masing
-cd dataweb
+mysql -u root -p < database/create_database.sql
 ```
-3. Membuat file .env
-```bash
-cp .env.example .env
-nano .env
-```
-4. Atur koneksi database (pastikan databasenya sudah di buat terlebih dahulu)
-```bash
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=db_name
-DB_USERNAME=db_user
-DB_PASSWORD=db_pass
-```
-5. Install dependncies
+
+Salin `.env.example` menjadi `.env`, lalu sesuaikan `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` dengan MySQL lokal. Nilai database bawaan adalah `laravel_kelas_xii`.
+
+Jalankan perintah berikut untuk memasang dependensi, membuat app key, membuat tabel, dan mengisi data awal beserta data film:
+
 ```bash
 composer install
-```
-6. Generate APP Key
-```bash
 php artisan key:generate
+php artisan migrate --seed
+php artisan serve
 ```
-7. Migration & Seeder
-```bash
-php artisan migrate -s
-```
-8. copy folder image yang ada pada folder public ke dalam folder storage/app
-9. Buat symlink untuk storage
-```bash
-php artisan storage:link
-```  
+
+Poster film disediakan di `public/template/images` dan dipakai langsung oleh halaman film; tidak perlu menyalin gambar ke storage atau membuat symlink.

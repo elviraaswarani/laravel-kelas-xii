@@ -31,7 +31,7 @@
               <div class="browse-inner">
               @for ($data = 0; $data < $films->count(); $data++)
               <div class="col-md-2 w3l-movie-gride-agile">
-                <a href="{{ route('movies.show', $films[$data]->id) }}" class="hvr-shutter-out-horizontal"><img src="{{ asset($films[$data]->poster) }}" title="album-name" alt=" " />
+                <a href="{{ route('movies.show', $films[$data]->id) }}" class="hvr-shutter-out-horizontal"><img class="movie-poster" src="{{ $films[$data]->poster_url }}" title="{{ $films[$data]->title }}" alt="{{ $films[$data]->title }}" />
                   <div class="w3l-action-icon">
                     <i class="fa fa-play-circle" aria-hidden="true"></i>
                   </div>

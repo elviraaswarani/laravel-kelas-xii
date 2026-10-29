@@ -29,7 +29,15 @@ class KritikController extends Controller
      */
     public function store(StoreKritikRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $kritik = Kritik::create([
+            ...$validated,
+            'user_id' => $request->user()->id,
+        ]);
+
+        return redirect()
+            ->route('movies.show', $kritik->film_id)
+            ->with('status', 'Komentar berhasil dikirim.');
     }
 
     /**

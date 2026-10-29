@@ -554,6 +554,71 @@ p.fexi_header_para1 a i {
 .form-module .form:nth-child(2) {
   display: block;
 }
+.form-module:not(.register-active) .login-form {
+	display: block;
+}
+.form-module .register-form {
+	display: none;
+}
+.form-module.register-active .login-form {
+	display: none;
+}
+.form-module.register-active .register-form {
+	display: block;
+}
+.form-module .toggle {
+	border: 0;
+	padding: 0;
+}
+.form-module .auth-submit {
+	background: #919191;
+	width: 100%;
+	border: 0;
+	padding: 10px 15px;
+	color: #ffffff;
+	font-size: 1em;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.form-module .auth-submit:hover {
+	background: #FF8D1B;
+}
+.form-module .remember-option {
+	display: block;
+	margin: -5px 0 16px;
+	color: #555;
+	font-weight: 400;
+}
+.form-module .auth-feedback {
+	margin: 20px 30px 0;
+	padding: 10px 12px;
+	background: #e8f4eb;
+	color: #245c32;
+}
+.form-module .auth-feedback-error {
+	background: #fbe9e7;
+	color: #8a2920;
+}
+.auth-user-name {
+	display: inline-block;
+	padding: 6px 12px;
+	color: #212121;
+}
+.logout-form {
+	display: inline-block;
+}
+.logout-form button {
+	border: 0;
+	padding: 6px 20px;
+	background: #FF8D1B;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+.logout-form button:hover {
+	background: #212121;
+}
 .form-module h3 {
     margin: 0 0 1.5em;
     color: #212121;

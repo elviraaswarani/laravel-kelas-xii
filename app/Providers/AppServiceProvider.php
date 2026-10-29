@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //
+        view()->share('genres', collect());
+
         if(Schema::hasTable('genres'))
         {
             view()->share('genres', Genre::all());

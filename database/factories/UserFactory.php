@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Profile;
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -22,14 +24,20 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $profileId = Profile::query()->inRandomOrder()->value('id') ?? Profile::create([
+            'umur' => fake()->numberBetween(1, 50),
+            'bio' => fake()->jobTitle(),
+            'alamat' => fake()->address(),
+        ])->id;
+
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
-            'role_id' => 1,
-            'profile_id' =>fake()->numberBetween(1,10),
+            'role_id' => Role::firstOrCreate(['name' => 'user'])->id,
+            'profile_id' => $profileId,
         ];
     }
 
