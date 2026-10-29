@@ -8,7 +8,9 @@
           <!--/browse-agile-w3ls -->
           <div class="browse-agile-w3ls general-w3ls">
             <div class="tittle-head">
-              @if ($genreFilm !== null)
+                  @if ($search !== '')
+                    <h4 class="latest-text">Search results for "{{ $search }}"</h4>
+                  @elseif ($genreFilm !== null)
                       <h4 class="latest-text">Movies Of Genre {{ $genreFilm->name }}</h4>
                     @else
                       <h4 class="latest-text">List Of Movies</h4>
@@ -29,6 +31,9 @@
             </div>
             <div class="container">
               <div class="browse-inner">
+              @if ($films->isEmpty())
+                <p class="search-empty-state">No movies found for "{{ $search }}".</p>
+              @endif
               @for ($data = 0; $data < $films->count(); $data++)
               <div class="col-md-2 w3l-movie-gride-agile">
                 <a href="{{ route('movies.show', $films[$data]->id) }}" class="hvr-shutter-out-horizontal"><img class="movie-poster" src="{{ $films[$data]->poster_url }}" title="{{ $films[$data]->title }}" alt="{{ $films[$data]->title }}" />

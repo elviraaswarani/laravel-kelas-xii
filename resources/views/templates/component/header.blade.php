@@ -4,9 +4,10 @@
       <a href="{{ route('home') }}"><h1>One<span>Movies</span></h1></a>
     </div>
     <div class="w3_search">
-      <form action="#" method="post">
-        <input type="text" name="Search" placeholder="Search" required="">
-        <input type="submit" value="Go">
+      <form action="{{ route('movies') }}" method="get" role="search">
+        <label class="sr-only" for="movie-search">Cari film</label>
+        <input id="movie-search" type="search" name="search" placeholder="Search movies" value="{{ request('search') }}">
+        <button type="submit" aria-label="Cari film">Go</button>
       </form>
     </div>
     <div class="w3l_sign_in_register">
